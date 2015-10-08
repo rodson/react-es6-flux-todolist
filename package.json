@@ -1,0 +1,25 @@
+{
+  "name": "react-es6-flux-todolist",
+  "version": "1.0.0",
+  "description": "todo list using react, es6 and flux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodson/react-es6-flux-todolist.git"
+  },
+  "keywords": [
+    "todo",
+    "react",
+    "es6",
+    "flux"
+  ],
+  "author": "rodson <rodsonluo@gmail.com> (http://www.rodsonluo.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodson/react-es6-flux-todolist/issues"
+  },
+  "homepage": "https://github.com/rodson/react-es6-flux-todolist#readme"
+}

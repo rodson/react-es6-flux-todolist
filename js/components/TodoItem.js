@@ -8,7 +8,8 @@ class TodoItem extends React.Component {
     todo: React.PropTypes.object,
     editing: React.PropTypes.bool,
     onEdit: React.PropTypes.func,
-    onToggle: React.PropTypes.func
+    onToggle: React.PropTypes.func,
+    onSave: React.PropTypes.func
   };
 
   state = {
@@ -47,14 +48,14 @@ class TodoItem extends React.Component {
     this.props.onEdit(this.props.todo.id);
   }
 
-  handleSave = () => {
-    this.props.onEdit(null);
-  }
-
   handleChange = (e) => {
     this.setState({
       title: e.target.value
     });
+  }
+
+  handleSave = (e) => {
+    this.props.onSave(this.props.todo.id, e.target.value);
   }
 
 }

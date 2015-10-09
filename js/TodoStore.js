@@ -4,7 +4,8 @@ import { EventEmitter } from 'events';
 import { uuid, store } from './utils';
 
 const CHANGE_EVENT = 'change';
-var _todos = store('todos');
+const TODOS = 'todos';
+var _todos = store(TODOS);
 
 function create(title) {
   if (!title) {
@@ -16,13 +17,19 @@ function create(title) {
     completed: false
   }
   _todos[todo.id] = todo;
-  store('todos', _todos);
+  store(TODOS, _todos);
 }
 
 function toggleComplete(id) {
   var todo = _todos[id];
   todo.completed = !todo.completed;
-  store('todos', _todos);
+  store(TODOS, _todos);
+}
+
+function update(id, title) {
+  var todo = _todos[id];
+  todo.title = title;
+  store(TODOS, _todos);
 }
 
 class TodoStore extends EventEmitter {
@@ -51,6 +58,10 @@ class TodoStore extends EventEmitter {
         break;
       case TodoConstants.TOGGLE_COMPLETE:
         toggleComplete(payload.id);
+        this.emitChange();
+        break;
+      case TodoConstants.UPDATE:
+        update(payload.id, payload.title);
         this.emitChange();
         break;
       default:

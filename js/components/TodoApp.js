@@ -33,7 +33,6 @@ class TodoApp extends React.Component {
   }
 
   _update = () => {
-    console.log('update is called');
     this.setState(getTodoState);
   }
 }

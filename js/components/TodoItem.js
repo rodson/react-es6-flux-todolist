@@ -2,6 +2,8 @@ import React from 'react';
 import TodoActions from '../TodoActions';
 import classNames from 'classnames';
 
+const KEY_ENTER = 13;
+
 class TodoItem extends React.Component {
 
   static propTypes = {
@@ -33,13 +35,15 @@ class TodoItem extends React.Component {
             checked={this.props.todo.completed}
             onChange={this.props.onToggle}/>
           <label onDoubleClick={this.handleEdit}>{this.state.title}</label>
+          <button onClick={this.props.onDelete}>x</button>
         </div>
         <input
           ref="edittext"
           type="text"
           onBlur={this.handleSave}
           onChange={this.handleChange}
-          value={this.state.title} />
+          value={this.state.title}
+          onKeyDown={this.handleKeyDown}/>
       </li>
     );
   }
@@ -56,6 +60,12 @@ class TodoItem extends React.Component {
 
   handleSave = (e) => {
     this.props.onSave(this.props.todo.id, e.target.value);
+  }
+
+  handleKeyDown = (e) => {
+    if (e.keyCode === KEY_ENTER) {
+      this.handleSave(e);
+    }
   }
 
 }

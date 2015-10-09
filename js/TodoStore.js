@@ -32,6 +32,11 @@ function update(id, title) {
   store(TODOS, _todos);
 }
 
+function deleteItem(id) {
+  delete _todos[id];
+  store(TODOS, _todos);
+}
+
 class TodoStore extends EventEmitter {
 
   getTodos() {
@@ -64,6 +69,9 @@ class TodoStore extends EventEmitter {
         update(payload.id, payload.title);
         this.emitChange();
         break;
+      case TodoConstants.DELETE:
+        deleteItem(payload.id);
+        this.emitChange();
       default:
         break;
     }

@@ -21,7 +21,9 @@ class MainSection extends React.Component {
           editing={this.state.editing === id}
           onEdit={this.onEdit.bind(this, todo)}
           onToggle={this.toggleComplete.bind(this, todo)}
-          onSave={this.onSave} />
+          onSave={this.onSave}
+          onDelete={this.onDelete.bind(this, todo)}
+        />
       );
     }
 
@@ -38,6 +40,10 @@ class MainSection extends React.Component {
     this.setState({
       editing: todo.id
     });
+  }
+
+  onDelete(todo) {
+    TodoActions.delete(todo.id);
   }
 
   onSave = (id, title) => {

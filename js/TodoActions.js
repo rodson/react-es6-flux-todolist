@@ -28,6 +28,14 @@ class TodoActions {
     AppDispatcher.dispatch(action);
   }
 
+  delete(id) {
+    var action = {
+      actionType: TodoConstants.DELETE,
+      id: id
+    };
+    AppDispatcher.dispatch(action);
+  }
+
 }
 
 export default new TodoActions();

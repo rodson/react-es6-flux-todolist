@@ -1,5 +1,6 @@
 import React from 'react';
 import TextInput from './TextInput';
+import TodoActions from '../TodoActions';
 
 class Header extends React.Component {
 
@@ -12,8 +13,8 @@ class Header extends React.Component {
     );
   }
 
-  _onSave(text) {
-    console.log('call onsave', text);
+  _onSave(title) {
+    TodoActions.create(title);
   }
 }
 

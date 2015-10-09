@@ -8,10 +8,16 @@ gulp.task('build', function() {
       entries: './js/app.js',
       debug: true
     })
-    .transform(babelify)
+    .transform(babelify.configure({
+      stage: 0
+    }))
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['build']);
+gulp.task('watch', function() {
+  gulp.watch('./js/**/*.js', ['build']);
+});
+
+gulp.task('default', ['build', 'watch']);

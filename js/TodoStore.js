@@ -37,6 +37,13 @@ function deleteItem(id) {
   store(TODOS, _todos);
 }
 
+function toggleAll(completed) {
+  for (var id in _todos) {
+    _todos[id].completed = completed;
+  }
+  store(TODOS, _todos);
+}
+
 class TodoStore extends EventEmitter {
 
   getTodos() {
@@ -72,6 +79,10 @@ class TodoStore extends EventEmitter {
       case TodoConstants.DELETE:
         deleteItem(payload.id);
         this.emitChange();
+      case TodoConstants.TOGGLE_ALL:
+        toggleAll(payload.completed)
+        this.emitChange();
+        break;
       default:
         break;
     }

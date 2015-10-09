@@ -25,7 +25,7 @@ class TodoApp extends React.Component {
   render() {
     return (
       <div className="todoapp">
-        <Header />
+        <Header todos={this.state.todos}/>
         <MainSection todos={this.state.todos} />
         <Footer />
       </div>

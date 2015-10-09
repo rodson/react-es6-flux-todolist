@@ -21,5 +21,17 @@
   "bugs": {
     "url": "https://github.com/rodson/react-es6-flux-todolist/issues"
   },
-  "homepage": "https://github.com/rodson/react-es6-flux-todolist#readme"
+  "homepage": "https://github.com/rodson/react-es6-flux-todolist#readme",
+  "dependencies": {
+    "classnames": "^2.1.5",
+    "flux": "^2.1.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
+  },
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
 }

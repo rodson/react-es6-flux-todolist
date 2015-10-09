@@ -7,7 +7,8 @@ class TodoItem extends React.Component {
   static propTypes = {
     todo: React.PropTypes.object,
     editing: React.PropTypes.bool,
-    onEdit: React.PropTypes.func
+    onEdit: React.PropTypes.func,
+    onToggle: React.PropTypes.func
   };
 
   state = {
@@ -26,7 +27,10 @@ class TodoItem extends React.Component {
     return (
       <li className={classNames('todoitem', {editing: this.props.editing})}>
         <div>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={this.props.todo.completed}
+            onChange={this.props.onToggle}/>
           <label onDoubleClick={this.handleEdit}>{this.state.title}</label>
         </div>
         <input

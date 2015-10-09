@@ -11,6 +11,14 @@ class TodoActions {
     AppDispatcher.dispatch(action);
   }
 
+  toggleComplete(id) {
+    var action = {
+      actionType: TodoConstants.TOGGLE_COMPLETE,
+      id: id
+    }
+    AppDispatcher.dispatch(action);
+  }
+
 }
 
 export default new TodoActions();

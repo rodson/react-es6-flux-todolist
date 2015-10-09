@@ -1,3 +1,4 @@
 export default {
-  CREATE: 'CREATE'
+  CREATE: 'CREATE',
+  TOGGLE_COMPLETE: 'TOGGLE_COMPLETE'
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoItem from './TodoItem';
+import TodoActions from '../TodoActions';
 
 class MainSection extends React.Component {
 
@@ -12,12 +13,14 @@ class MainSection extends React.Component {
     var todoList = [];
 
     for (var id in todos) {
+      let todo = todos[id];
       todoList.push(
         <TodoItem
           key={id}
-          todo={todos[id]}
+          todo={todo}
           editing={this.state.editing === id}
-          onEdit={this.onEdit} />
+          onEdit={this.onEdit.bind(this, todo)}
+          onToggle={this.toggleComplete.bind(this, todo)} />
       );
     }
 
@@ -30,14 +33,18 @@ class MainSection extends React.Component {
     );
   }
 
-  onEdit = (id) => {
+  onEdit(todo) {
     this.setState({
-      editing: id
+      editing: todo.id
     });
   }
 
-  onSave = (title) => {
+  onSave(title) {
 
+  }
+
+  toggleComplete(todo) {
+    TodoActions.toggleComplete(todo.id);
   }
 
 }

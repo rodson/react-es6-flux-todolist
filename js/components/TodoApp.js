@@ -15,7 +15,7 @@ class TodoApp extends React.Component {
 
   state = getTodoState();
 
-  componentDidMount() {
+  componentWillMount() {
     TodoStore.addChangeListener(this._update);
   }
 
@@ -34,7 +34,7 @@ class TodoApp extends React.Component {
   }
 
   _update = () => {
-    this.setState(getTodoState);
+    this.setState(getTodoState());
   }
 }
 

@@ -28,17 +28,19 @@ class TodoItem extends React.Component {
 
   render() {
     return (
-      <li className={classNames('todoitem', {editing: this.props.editing})}>
-        <div>
+      <li className={classNames('todoitem', {editing: this.props.editing, completed: this.props.todo.completed})}>
+        <div className="view">
           <input
+            className="toggle"
             type="checkbox"
             checked={this.props.todo.completed}
             onChange={this.props.onToggle}/>
           <label onDoubleClick={this.handleEdit}>{this.state.title}</label>
-          <button onClick={this.props.onDelete}>x</button>
+          <button className="destroy" onClick={this.props.onDelete} />
         </div>
         <input
           ref="edittext"
+          className="edit"
           type="text"
           onBlur={this.handleSave}
           onChange={this.handleChange}

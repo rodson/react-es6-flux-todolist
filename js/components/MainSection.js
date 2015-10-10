@@ -12,17 +12,19 @@ class MainSection extends React.Component {
     var allTodos = this.props.todos;
     var filter = this.props.filter;
     var todoList = [];
+    var activeCount = 0;
 
     var todos = {};
-    if (!filter) {
-      todos = allTodos;
-    } else {
-      for (var id in allTodos) {
-        if (filter === 'active' && !allTodos[id].completed) {
-          todos[id] = allTodos[id];
-        } else if (filter === 'completed' && allTodos[id].completed) {
-          todos[id] = allTodos[id];
-        }
+    for (var id in allTodos) {
+      if (!allTodos[id].completed) {
+        activeCount++;
+      }
+      if (!filter) {
+        todos[id] = allTodos[id];
+      } else if (filter === 'active' && !allTodos[id].completed) {
+        todos[id] = allTodos[id];
+      } else if (filter === 'completed' && allTodos[id].completed) {
+        todos[id] = allTodos[id];
       }
     }
 
@@ -42,8 +44,9 @@ class MainSection extends React.Component {
     }
 
     return (
-      <section className="mainsection">
-        <ul>
+      <section className="main">
+        <input className="toggle-all" type="checkbox" onChange={this.toggleAll} checked={activeCount === 0} />
+        <ul className="todo-list">
           {todoList}
         </ul>
       </section>
@@ -69,6 +72,10 @@ class MainSection extends React.Component {
 
   toggleComplete(todo) {
     TodoActions.toggleComplete(todo.id);
+  }
+
+  toggleAll(e) {
+    TodoActions.toggleAll(e.target.checked);
   }
 
 }

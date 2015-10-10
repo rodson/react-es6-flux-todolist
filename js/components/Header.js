@@ -9,30 +9,16 @@ class Header extends React.Component {
   };
 
   render() {
-    var activeCount = 0;
-    var todos = this.props.todos;
-    for (var id in todos) {
-      if (!todos[id].completed) {
-        activeCount++;
-      }
-    }
     return (
       <header className="header">
         <h1>todos</h1>
-        <div>
-          <input type="checkbox" onChange={this.handleChange} checked={activeCount === 0} />
-          <TextInput onSave={this.handleSave} placeholder={"What needs to be done?"} />
-        </div>
+        <TextInput className="new-todo" onSave={this.handleSave} placeholder={"What needs to be done?"} />
       </header>
     );
   }
 
   handleSave(title) {
     TodoActions.create(title);
-  }
-
-  handleChange(e) {
-    TodoActions.toggleAll(e.target.checked);
   }
 
 }

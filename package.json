@@ -27,7 +27,8 @@
     "director": "^1.2.8",
     "flux": "^2.1.1",
     "react": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "todomvc-app-css": "^2.0.1"
   },
   "devDependencies": {
     "babelify": "^6.3.0",

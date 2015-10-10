@@ -21,6 +21,7 @@ class TextInput extends React.Component {
   render() {
     return (
       <input type="text"
+        className={this.props.className}
         value={this.state.value}
         onChange={this._onChange}
         placeholder={this.props.placeholder}

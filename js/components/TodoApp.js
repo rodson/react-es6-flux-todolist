@@ -28,7 +28,7 @@ class TodoApp extends React.Component {
       <div className="todoapp">
         <Header todos={this.state.todos}/>
         <MainSection filter={this.state.filter} todos={this.state.todos} />
-        <Footer todos={this.state.todos} />
+        <Footer filter={this.state.filter} todos={this.state.todos} />
       </div>
     );
   }

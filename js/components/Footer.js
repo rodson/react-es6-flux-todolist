@@ -2,6 +2,7 @@ import React from 'react';
 import TodoActions from '../TodoActions';
 import { pluralize } from '../utils';
 import { Router } from 'director';
+import classNames from 'classnames';
 
 class Footer extends React.Component {
 
@@ -29,13 +30,21 @@ class Footer extends React.Component {
     }
     return (
       <footer className="footer">
-        <span>{activeCount} { pluralize(activeCount, 'item') } left</span>
-        <label>All</label>
-        <a href="#/">all</a>
-        <a href="#/active">active</a>
-        <a href="#/completed">completed</a>
+        <span className="todo-count"><strong>{activeCount}</strong> { pluralize(activeCount, 'item') } left</span>
+        <ul className="filters">
+          <li><a className={classNames({selected: this.props.filter === ''})} href="#/">All</a></li>
+          <li><a className={classNames({selected: this.props.filter === 'active'})} href="#/active">Active</a></li>
+          <li><a className={classNames({selected: this.props.filter === 'completed'})} href="#/completed">Completed</a></li>
+        </ul>
+        <button className="clear-completed" onClick={this.onClearCompleted}>
+          Clear completed
+        </button>
+
       </footer>
     );
+  }
+
+  onClearCompleted() {
   }
 
   all() {

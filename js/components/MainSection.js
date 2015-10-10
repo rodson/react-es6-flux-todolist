@@ -9,8 +9,22 @@ class MainSection extends React.Component {
   };
 
   render() {
-    var todos = this.props.todos;
+    var allTodos = this.props.todos;
+    var filter = this.props.filter;
     var todoList = [];
+
+    var todos = {};
+    if (!filter) {
+      todos = allTodos;
+    } else {
+      for (var id in allTodos) {
+        if (filter === 'active' && !allTodos[id].completed) {
+          todos[id] = allTodos[id];
+        } else if (filter === 'completed' && allTodos[id].completed) {
+          todos[id] = allTodos[id];
+        }
+      }
+    }
 
     for (var id in todos) {
       let todo = todos[id];

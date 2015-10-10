@@ -6,6 +6,7 @@ import TodoStore from '../TodoStore';
 
 function getTodoState() {
   return {
+    filter: TodoStore.getFilter(),
     todos: TodoStore.getTodos()
   };
 }
@@ -26,8 +27,8 @@ class TodoApp extends React.Component {
     return (
       <div className="todoapp">
         <Header todos={this.state.todos}/>
-        <MainSection todos={this.state.todos} />
-        <Footer />
+        <MainSection filter={this.state.filter} todos={this.state.todos} />
+        <Footer todos={this.state.todos} />
       </div>
     );
   }

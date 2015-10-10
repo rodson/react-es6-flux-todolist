@@ -6,6 +6,7 @@ import { uuid, store } from './utils';
 const CHANGE_EVENT = 'change';
 const TODOS = 'todos';
 var _todos = store(TODOS);
+var _filter = '';
 
 function create(title) {
   if (!title) {
@@ -44,10 +45,18 @@ function toggleAll(completed) {
   store(TODOS, _todos);
 }
 
+function updateFilter(filter) {
+  _filter = filter;
+}
+
 class TodoStore extends EventEmitter {
 
   getTodos() {
     return _todos;
+  }
+
+  getFilter() {
+    return _filter;
   }
 
   addChangeListener(callback) {
@@ -81,6 +90,10 @@ class TodoStore extends EventEmitter {
         this.emitChange();
       case TodoConstants.TOGGLE_ALL:
         toggleAll(payload.completed)
+        this.emitChange();
+        break;
+      case TodoConstants.UPDATE_FILTER:
+        updateFilter(payload.filter);
         this.emitChange();
         break;
       default:

@@ -44,6 +44,14 @@ class TodoActions {
     AppDispatcher.dispatch(action);
   }
 
+  updateFilter(filter) {
+    var action = {
+      actionType: TodoConstants.UPDATE_FILTER,
+      filter: filter
+    };
+    AppDispatcher.dispatch(action);
+  }
+
 }
 
 export default new TodoActions();

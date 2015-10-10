@@ -49,6 +49,15 @@ function updateFilter(filter) {
   _filter = filter;
 }
 
+function clearCompleted() {
+  for (var id in _todos) {
+    if (_todos[id].completed) {
+      delete _todos[id];
+    }
+  }
+  store(TODOS, _todos);
+}
+
 class TodoStore extends EventEmitter {
 
   getTodos() {
@@ -94,6 +103,10 @@ class TodoStore extends EventEmitter {
         break;
       case TodoConstants.UPDATE_FILTER:
         updateFilter(payload.filter);
+        this.emitChange();
+        break;
+      case TodoConstants.CLEAR_COMPLETED:
+        clearCompleted();
         this.emitChange();
         break;
       default:

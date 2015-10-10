@@ -45,6 +45,7 @@ class Footer extends React.Component {
   }
 
   onClearCompleted() {
+    TodoActions.clearCompleted();
   }
 
   all() {

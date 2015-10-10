@@ -52,6 +52,13 @@ class TodoActions {
     AppDispatcher.dispatch(action);
   }
 
+  clearCompleted() {
+    var action = {
+      actionType: TodoConstants.CLEAR_COMPLETED
+    };
+    AppDispatcher.dispatch(action);
+  }
+
 }
 
 export default new TodoActions();

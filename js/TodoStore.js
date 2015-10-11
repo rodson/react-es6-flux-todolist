@@ -5,10 +5,12 @@ import { uuid, store } from './utils';
 
 const CHANGE_EVENT = 'change';
 const TODOS = 'todos';
-var _todos = store(TODOS);
+var _todos;
 var _filter = '';
 
 function create(title) {
+  _todos = _todos || store(TODOS);
+
   if (!title) {
     return;
   }
@@ -22,23 +24,31 @@ function create(title) {
 }
 
 function toggleComplete(id) {
+  _todos = _todos || store(TODOS);
+
   var todo = _todos[id];
   todo.completed = !todo.completed;
   store(TODOS, _todos);
 }
 
 function update(id, title) {
+  _todos = _todos || store(TODOS);
+
   var todo = _todos[id];
   todo.title = title;
   store(TODOS, _todos);
 }
 
 function deleteItem(id) {
+  _todos = _todos || store(TODOS);
+
   delete _todos[id];
   store(TODOS, _todos);
 }
 
 function toggleAll(completed) {
+  _todos = _todos || store(TODOS);
+
   for (var id in _todos) {
     _todos[id].completed = completed;
   }
@@ -50,6 +60,8 @@ function updateFilter(filter) {
 }
 
 function clearCompleted() {
+  _todos = _todos || store(TODOS);
+
   for (var id in _todos) {
     if (_todos[id].completed) {
       delete _todos[id];
@@ -61,7 +73,7 @@ function clearCompleted() {
 class TodoStore extends EventEmitter {
 
   getTodos() {
-    return _todos;
+    return _todos || store(TODOS);
   }
 
   getFilter() {
